@@ -50,7 +50,7 @@
                                         <td><?php echo $i; ?></td>
                                         <td><?php echo $roleListings->role; ?></td>
                                         <td>
-                                            <a href="<?php echo base_url(); ?>editRole/<?php echo $roleListings->roleId; ?>" class="btn btn-info">EDIT</a>
+                                            <a href="<?php echo base_url(); ?>role/editRole/<?php echo $roleListings->roleId; ?>" class="btn btn-info">EDIT</a>
                                             <a href="#" class="btn btn-danger">DELETE</a>
                                         </td>                                
                                     </tr>

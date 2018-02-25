@@ -44,6 +44,13 @@ class RoleController extends CI_Controller {
             }
         }       
     }
+    public function editRole($id){
+        $this->global['pageTitle'] = 'Admin | Edit Role';
+        loadViews('admin/role/edit', $this->global, NULL);
+    }
+    public function updateRole(){
+        
+    }
 }    
 
 

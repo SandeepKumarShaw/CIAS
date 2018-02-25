@@ -61,6 +61,10 @@ $route['logout'] = 'LoginController/logout';
 $route['role'] = 'RoleController';
 $route['role/addRole'] = 'RoleController/addRole';
 $route['role/addRoleSuc'] = 'RoleController/addRoleSuc';
+$route['role/editRole/(:num)'] = 'RoleController/editRole/$1';
+$route['role/updateRole'] = 'RoleController/updateRole';
+
+
 
 
 

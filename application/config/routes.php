@@ -50,25 +50,27 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |		my-controller/my-method	-> my_controller/my_method
 */
 $route['default_controller'] = 'welcome';
-$route['404_override'] = '';
+$route['404_override'] = 'ErrorController';
 $route['translate_uri_dashes'] = FALSE;
 
 
+
+
+/*********** USER DEFINED ROUTES *******************/
+
+//Login
 $route['login'] = 'LoginController/login';
 $route['loginme'] = 'LoginController/loginme';
 $route['logout'] = 'LoginController/logout';
 
+//Role
 $route['role'] = 'RoleController';
+$route['role/(:num)']  = "RoleController/index/$1";
 $route['role/addRole'] = 'RoleController/addRole';
 $route['role/addRoleSuc'] = 'RoleController/addRoleSuc';
 $route['role/editRole/(:num)'] = 'RoleController/editRole/$1';
 $route['role/updateRole'] = 'RoleController/updateRole';
-
-
-
-
-
-
+//User
 $route['dashboard'] = 'UserController';
 $route['user'] = 'UserController/user';
 

@@ -5,7 +5,6 @@
 
     <!-- Bootstrap Core JavaScript -->
     <script src="<?php echo base_url(); ?>/assets/vendor/bootstrap/js/bootstrap.min.js"></script>
-    
 
     <!-- Metis Menu Plugin JavaScript -->
     <script src="<?php echo base_url(); ?>/assets/vendor/metisMenu/metisMenu.min.js"></script>
@@ -28,7 +27,16 @@
         });
     });
     </script>
-
+    <script type="application/javascript">
+    /** After windod Load */
+    $(window).bind("load", function() {
+      window.setTimeout(function() {
+        $(".alert").fadeTo(500, 0).slideUp(500, function(){
+            $(this).remove();
+        });
+    }, 1000);
+    });
+    </script>
 
 </body>
 

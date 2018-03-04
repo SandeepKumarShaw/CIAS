@@ -1,4 +1,13 @@
-==========================================================
-#V1.0 stable released
- 1. File uploaded to github
- 2. route file modified
+
+//==========Ci Basic Functionality with admin============//
+V1.0 stable released
+    1. File uploaded to github
+    2. route file modified
+V2.0 stable released
+   1. Common error and success msg.
+   2. template library created.
+   3. Role curd operartion functionality done.
+   4. Pagination function created.
+   5. 404 custom page and controller created.
+
+

@@ -35,44 +35,19 @@
                         <h3 class="panel-title">Please Sign In</h3>
                     </div>
                     <div class="panel-body">
-                        <?php $this->load->library('form_validation'); ?>
-                        <?php //echo validation_errors(); ?>
-                        <?php
-                         $emailerror = form_error('email');
-                         if ($emailerror) {?>                             
-                        <div class="alert alert-danger alert-dismissable">
-                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-                            <?php echo $emailerror; ?>
-                        </div>
-                        <?php } ?>
+                      
 
-                        <?php
-                         $passerror = form_error('password');
-                         if ($passerror) {?>                             
-                        <div class="alert alert-danger alert-dismissable">
-                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-                            <?php echo $passerror; ?>
-                        </div>
-                        <?php } ?>
-
-                        <?php
-                         $error = $this->session->flashdata('error');
-                         if ($error) {?>                             
-                        <div class="alert alert-danger alert-dismissable">
-                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-                            <?php echo $error; ?>
-                        </div>
-                        <?php } ?>
-
-                        <?php
-                         $success = $this->session->flashdata('message');
-                         if ($success) {?>                             
-                        <div class="alert alert-success alert-dismissable">
+                         <?php
+                           $message = $this->session->flashdata('item');
+                           if ($message) {?>
+                            <div class="<?php echo $message['class']; ?>">
                                 <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-                                <?php echo $success; ?>
-                        </div>
-                        <?php } ?>                     
-                        
+                                <?php echo $message['message']; ?>
+                            </div>
+                           <?php } ?>
+
+
+                              
 
                         <form role="form" action="<?php echo base_url(); ?>loginme" method="post">
                             <fieldset>
@@ -102,6 +77,17 @@
 
     <!-- Custom Theme JavaScript -->
     <script src="<?php echo base_url();?>/assets/dist/js/sb-admin-2.js"></script>
+
+    <script type="application/javascript">
+    /** After windod Load */
+    $(window).bind("load", function() {
+      window.setTimeout(function() {
+        $(".alert").fadeTo(500, 0).slideUp(500, function(){
+            $(this).remove();
+        });
+    }, 1000);
+    });
+    </script>
 
 </body>
 

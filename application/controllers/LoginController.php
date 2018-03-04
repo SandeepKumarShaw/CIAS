@@ -17,10 +17,14 @@ class LoginController extends CI_Controller {
     }
     public function loginme(){
         
-        $this->load->library('form_validation');
         $this->form_validation->set_rules('email', 'Username', 'required');
         $this->form_validation->set_rules('password', 'Password', 'required');
         if ($this->form_validation->run() == FALSE){
+            $messge = array(
+                          'message' => validation_errors(),
+                          'class'   => 'alert alert-danger alert-dismissable fade in'
+                      );
+            $this->session->set_flashdata('item', $messge);
             $this->load->view('admin/login');
         }else{
             $email = $this->input->post('email');
@@ -42,7 +46,11 @@ class LoginController extends CI_Controller {
                 }               
                 
             } else {
-                $this->session->set_flashdata('error','Login failed!');
+                $messge = array(
+                          'message' => 'Login failed!',
+                          'class'   => 'alert alert-danger alert-dismissable fade in'
+                          );
+                $this->session->set_flashdata('item', $messge);
                 $this->load->view('admin/login');
             }
             
@@ -59,8 +67,13 @@ class LoginController extends CI_Controller {
     public function logout(){
         $this->session->unset_userdata('isLoggedIn');
         $this->session->unset_userdata('userId');
-        $this->session->sess_destroy();
-        $this->session->set_flashdata('message','Logout successfully!');        
+        //$this->session->sess_destroy();
+        $messge = array(
+                    'message' => 'Logout successfully!',
+                    'class'   => 'alert alert-success alert-dismissable'
+                  );
+        $this->session->set_userdata('item', $messge);   
+
         redirect('/login');
     }
     

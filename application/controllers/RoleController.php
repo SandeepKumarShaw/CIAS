@@ -143,8 +143,15 @@ class RoleController extends CI_Controller {
                 $this->session->set_flashdata('item', $messge);
                 $this->editRole($roleId);
             }
-        }
-        
+        }        
+    }
+    public function delRole(){
+        $roleId = $this->input->post('id');
+        $delete = $this->RoleModel->delRoleInfo($roleId);
+        echo '<div class="alert alert-success alert-dismissable fade in">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                    Data Deleted Successfully
+                </div>';
     }
 }    
 

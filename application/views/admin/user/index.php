@@ -14,7 +14,7 @@
                             User Listing Table
                         </div>
                         <div class="col-lg-2">
-                            <a href="" class="btn btn-success"><i class="material-icons"></i> <span>Add New User</span></a>
+                            <a href="<?php echo base_url();?>user/addUser" class="btn btn-success"><i class="material-icons"></i> <span>Add New User</span></a>
                         </div>
                         <!-- /.col-lg-12 -->
                     </div>                          

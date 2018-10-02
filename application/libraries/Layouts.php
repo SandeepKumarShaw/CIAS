@@ -16,12 +16,12 @@ class Layouts{
 	public function set_title($title){
         $this->title_for_template = $title;
 	}
-	public function view($view_name, $params = array(), $layout = 'layout'){
+	public function view($view_name, $params = array(), $layout = 'app'){
 		if ($this->title_for_template != NULL) {
 			$this->title_for_template = $this->title_for_separator.$this->title_for_template;
 		}
         $content_for_layouts = $this->CI->load->view($view_name, $params, TRUE);
-        $this->CI->load->view('layouts/'.$layout, array(
+        $this->CI->load->view('FrontEnd/template/'.$layout, array(
           'title_for_template'   => $this->title_for_template,
           'content_for_layouts' => $content_for_layouts
         ));

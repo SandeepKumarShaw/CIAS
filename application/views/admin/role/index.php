@@ -1,3 +1,4 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <div class="" id="page-wrapper">
   <div class="row">
         <div class="col-lg-12">            
@@ -5,7 +6,7 @@
         </div>
         <!-- /.col-lg-12 -->
     </div>
-    <div class="row">  
+    <div class="row" id="abc">  
      <?php
            $message = $this->session->flashdata('item');
            if ($message) {?>
@@ -14,7 +15,7 @@
                 <?php echo $message['message']; ?>
             </div>
        <?php } ?>
-    
+          
         <div class="col-md-12">
 
             <div class="panel panel-default panel-table">
@@ -37,12 +38,12 @@
                 </div>
               </div>
               <div class="panel-body">
-                <table class="table table-striped table-bordered table-list">
+                <table id="example" class="table table-striped table-bordered table-list">
                   <thead>
                     <tr>
-                        <th class="text-center">Actions</th>
-                        <th class="hidden-xs">SL</th>
-                        <th>Role</th>
+                      <th class="hidden-xs">SL</th>
+                      <th>Role</th>
+                      <th class="text-center">Actions</th>                        
                     </tr>
                   </thead>
                   <tbody>
@@ -51,14 +52,14 @@
                     if(!empty($roleListing)){
                     foreach ($roleListing as $roleListings) {$i++;?>                        
                       <tr>                      
-                        
-                        <td class="text-center">                            
-                            <a class="btn btn-sm btn-info" href="<?php echo base_url().'role/editRole/'.$roleListings->roleId; ?>" title="Edit"><i class="fa fa-pencil"></i></a> |
-                            <a class="btn btn-sm btn-danger deleteUser" href="<?php echo base_url(); ?>" data-userid="2" title="Delete"><i class="fa fa-trash"></i></a>
-                        </td>
                         <td><?php echo $i; ?></td>
                         <td><?php echo $roleListings->role; ?></td>
+                        <td class="text-center">                            
+                            <a class="btn btn-sm btn-info" href="<?php echo base_url().'role/editRole/'.$roleListings->roleId; ?>" title="Edit"><i class="fa fa-pencil"></i></a> |
+                            <a class="btn btn-sm btn-danger deleteUser" id="<?php echo $roleListings->roleId; ?>" href="#" data-userid="2" title="Delete"><i class="fa fa-trash"></i></a>
+                        </td>                        
                       </tr>
+                          
                     <?php } } ?>
                           
                         </tbody>
@@ -86,3 +87,28 @@ echo '</pre>';
         </div>
     </div>
 </div>
+<script type="text/javascript">
+  $(document).ready(function(){
+
+      $(document).on('click','.deleteUser',function(event){
+        var $button = $(this);
+        var id = $(this).attr("id");
+        alert(id);
+        if(confirm("Are you sure you want to delete this?")){
+
+          $.ajax({
+            url:"<?php echo base_url().'RoleController/delRole/';?>",
+            method:"POST",
+            data:{id:id},
+            success:function(data){
+             $('#abc').html(data);              
+              //table.row( $button.parents('tr') ).remove().draw();
+            }
+          });
+        }
+        else{
+          return false;
+        }      
+   });
+  });
+</script>

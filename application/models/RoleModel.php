@@ -42,5 +42,9 @@ class RoleModel extends CI_Model {
         return TRUE;
 
     }
+    public function delRoleInfo($roleId){
+        $this->db->where('roleId', $roleId);
+        $this->db->delete('tbl_roles');
+    }
     	
 }
